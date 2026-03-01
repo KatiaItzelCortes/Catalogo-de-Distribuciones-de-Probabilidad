@@ -1,0 +1,71 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage[margin=1cm, landscape]{geometry} % Hoja horizontal para mayor espacio
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+
+\title{Catalogo de Distribuciones de Probabilidad}
+\author{Crtés Zanabria Katia Itzel}
+
+\begin{document}
+
+\maketitle
+
+\section{Distribuciones Discretas}
+
+\begin{small}
+\begin{longtable}{p{1.8cm} p{1.6cm} p{3cm} p{3cm} p{1.5cm} p{1.5cm} p{1.5cm} p{2.5cm}}
+\toprule
+\textbf{Nombre} & \textbf{Nom.} & \textbf{Función Prob./Dens.} & \textbf{Función Acumulativa} & \textbf{Media} & \textbf{Varianza} & \textbf{Desv. Est.} & \textbf{F.G.M.} \\ \midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endcustomfoot
+
+% --- DISCRETAS ---
+\textbf{Uniforme D.} & $U(a,b)$ & $\frac{1}{n}$ & $\frac{\lfloor x \rfloor - a + 1}{n}$ & $\frac{a+b}{2}$ & $\frac{n^2-1}{12}$ & $\sqrt{\frac{n^2-1}{12}}$ & $\frac{e^{at}-e^{(b+1)t}}{n(1-e^t)}$ \\ \addlinespace
+\textbf{Binomial} & $B(n,p)$ & $\binom{n}{x} p^x q^{n-x}$ & $\sum_{i=0}^{\lfloor x \rfloor} \binom{n}{i} p^i q^{n-i}$ & $np$ & $npq$ & $\sqrt{npq}$ & $(q+pe^t)^n$ \\ \addlinespace
+\textbf{Geométrica} & $Geo(p)$ & $q^{x-1}p$ & $1-q^{\lfloor x \rfloor}$ & $\frac{1}{p}$ & $\frac{q}{p^2}$ & $\frac{\sqrt{q}}{p}$ & $\frac{pe^t}{1-qe^t}$ \\ \addlinespace
+\textbf{Hipergeom.} & $H(N,K,n)$ & $\frac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}$ & $\sum_{i=0}^{\lfloor x \rfloor} \frac{\binom{K}{i}\binom{N-K}{n-i}}{\binom{N}{n}}$ & $n\frac{K}{N}$ & $n\frac{K}{N}q\frac{N-n}{N-1}$ & $\sigma$ & No posee \\ \addlinespace
+\textbf{Poisson} & $\mathcal{P}(\lambda)$ & $\frac{e^{-\lambda}\lambda^x}{x!}$ & $e^{-\lambda} \sum \frac{\lambda^i}{i!}$ & $\lambda$ & $\lambda$ & $\sqrt{\lambda}$ & $e^{\lambda(e^t-1)}$ \\ \addlinespace
+\textbf{B. Negativa} & $BN(r,p)$ & $\binom{x-1}{r-1} p^r q^{x-r}$ & $I_p(r, x-r+1)$ & $\frac{r}{p}$ & $\frac{rq}{p^2}$ & $\frac{\sqrt{rq}}{p}$ & $(\frac{pe^t}{1-qe^t})^r$ \\ \addlinespace
+\textbf{Multinomial} & $M(n,\vec{p})$ & $\frac{n!}{\prod x_i!} \prod p_i^{x_i}$ & No aplica & $np_i$ & $np_i(1-p_i)$ & $\sigma_i$ & $(\sum p_i e^{t_i})^n$ \\ \midrule
+\end{longtable}
+\end{small}
+
+\section{Distribuciones Continuas}
+
+\begin{small}
+\begin{longtable}{p{1.8cm} p{1.6cm} p{3cm} p{3cm} p{1.5cm} p{1.5cm} p{1.5cm} p{2.5cm}}
+\toprule
+\textbf{Nombre} & \textbf{Nom.} & \textbf{Función Prob./Dens.} & \textbf{Función Acumulativa} & \textbf{Media} & \textbf{Varianza} & \textbf{Desv. Est.} & \textbf{F.G.M.} \\ \midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endcustomfoot
+
+% --- CONTINUAS ---
+\textbf{Uniforme} & $U(a,b)$ & $\frac{1}{b-a}$ & $\frac{x-a}{b-a}$ & $\frac{a+b}{2}$ & $\frac{(b-a)^2}{12}$ & $\frac{b-a}{\sqrt{12}}$ & $\frac{e^{tb}-e^{ta}}{t(b-a)}$ \\ \addlinespace
+\textbf{Normal} & $N(\mu, \sigma^2)$ & $\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}$ & $\frac{1}{2}[1+erf(\frac{x-\mu}{\sigma\sqrt{2}})]$ & $\mu$ & $\sigma^2$ & $\sigma$ & $e^{\mu t + \frac{\sigma^2 t^2}{2}}$ \\ \addlinespace
+\textbf{Lognormal} & $LN(\mu, \sigma^2)$ & $\frac{e^{-\frac{(\ln x-\mu)^2}{2\sigma^2}}}{x\sigma\sqrt{2\pi}}$ & $\Phi(\frac{\ln x - \mu}{\sigma})$ & $e^{\mu+\frac{\sigma^2}{2}}$ & $e^{2\mu+\sigma^2}(e^{\sigma^2}-1)$ & $\sqrt{Var}$ & No existe \\ \addlinespace
+\textbf{Logística} & $Logit(\mu, s)$ & $\frac{e^{-(x-\mu)/s}}{s(1+e^{-(x-\mu)/s})^2}$ & $\frac{1}{1+e^{-(x-\mu)/s}}$ & $\mu$ & $\frac{s^2\pi^2}{3}$ & $\frac{s\pi}{\sqrt{3}}$ & $e^{\mu t} B(1-st, 1+st)$ \\ \addlinespace
+\textbf{Beta} & $Beta(\alpha, \beta)$ & $\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha, \beta)}$ & $I_x(\alpha, \beta)$ & $\frac{\alpha}{\alpha+\beta}$ & $\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$ & $\sqrt{Var}$ & $\sum \frac{t^k}{k!} \frac{B(\alpha+k, \beta)}{B(\alpha, \beta)}$ \\ \addlinespace
+\textbf{Gamma} & $\Gamma(\alpha, \beta)$ & $\frac{x^{\alpha-1} e^{-x/\beta}}{\beta^\alpha \Gamma(\alpha)}$ & $\frac{\gamma(\alpha, x/\beta)}{\Gamma(\alpha)}$ & $\alpha\beta$ & $\alpha\beta^2$ & $\sqrt{\alpha}\beta$ & $(1-\beta t)^{-\alpha}$ \\ \addlinespace
+\textbf{Exponencial} & $Exp(\lambda)$ & $\lambda e^{-\lambda x}$ & $1-e^{-\lambda x}$ & $1/\lambda$ & $1/\lambda^2$ & $1/\lambda$ & $\frac{\lambda}{\lambda - t}$ \\ \addlinespace
+\textbf{Ji-cuadrado} & $\chi^2(k)$ & $\frac{x^{k/2-1} e^{-x/2}}{2^{k/2}\Gamma(k/2)}$ & $\frac{\gamma(k/2, x/2)}{\Gamma(k/2)}$ & $k$ & $2k$ & $\sqrt{2k}$ & $(1-2t)^{-k/2}$ \\ \addlinespace
+\textbf{t-Student} & $t(\nu)$ & $f(x, \nu)$ & $F(x, \nu)$ & $0$ & $\frac{\nu}{\nu-2}$ & $\sqrt{Var}$ & No existe \\ \addlinespace
+\textbf{F-Snedecor} & $F(d_1, d_2)$ & $f(x, d_1, d_2)$ & $I_{\frac{d_1 x}{d_1 x + d_2}}(\frac{d_1}{2}, \frac{d_2}{2})$ & $\frac{d_2}{d_2-2}$ & $\frac{2d_2^2(d_1+d_2-2)}{d_1(d_2-2)^2(d_2-4)}$ & $\sqrt{Var}$ & No existe \\ \addlinespace
+\textbf{Cauchy} & $C(x_0, \gamma)$ & $\frac{1}{\pi\gamma [1+(\frac{x-x_0}{\gamma})^2]}$ & $\frac{1}{\pi} \arctan(\frac{x-x_0}{\gamma}) + \frac{1}{2}$ & N/A & N/A & N/A & No existe \\ \addlinespace
+\textbf{Weibull} & $W(k, \lambda)$ & $\frac{k}{\lambda}(\frac{x}{\lambda})^{k-1} e^{-(x/\lambda)^k}$ & $1-e^{-(x/\lambda)^k}$ & $\lambda\Gamma(1+\frac{1}{k})$ & $\lambda^2[\Gamma(1+\frac{2}{k})-\mu^2]$ & $\sqrt{Var}$ & $k \geq 1$ \\ \addlinespace
+\textbf{Laplace} & $L(\mu, b)$ & $\frac{1}{2b} e^{-\frac{|x-\mu|}{b}}$ & $F(x, \mu, b)$ & $\mu$ & $2b^2$ & $\sqrt{2}b$ & $\frac{e^{\mu t}}{1-b^2 t^2}$ \\ \addlinespace
+\textbf{Pareto} & $Pa(x_m, \alpha)$ & $\frac{\alpha x_m^\alpha}{x^{\alpha+1}}$ & $1-(\frac{x_m}{x})^\alpha$ & $\frac{\alpha x_m}{\alpha-1}$ & $\frac{x_m^2 \alpha}{(\alpha-1)^2(\alpha-2)}$ & $\sqrt{Var}$ & No existe \\ \addlinespace
+\textbf{Triangular} & $Tri(a, b, c)$ & \textit{Tramos} & \textit{Tramos} & $\frac{a+b+c}{3}$ & $\frac{a^2+b^2+c^2-ab-ac-bc}{18}$ & $\sqrt{Var}$ & Compleja \\ \bottomrule
+\end{longtable}
+\end{small}
+
+\end{document}
